@@ -1,0 +1,25 @@
+{
+  "name": "testverktyg-grupp3",
+  "version": "1.0.0",
+  "description": "Testverktyg - Första gruppuppgiften",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --no-timeouts",
+    "para": "mocha --no-timeouts --parallel",
+    "report": "mocha --no-timeouts --reporter mochawesome",
+    "parareport": "mocha --no-timeouts --parallel --reporter mochawesome --require mochawesome/register"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "dotenv": "^16.0.3",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "selenium-webdriver": "^4.9.1"
+  }
+}
