@@ -12,7 +12,7 @@ const expect = require('chai').expect;
 */
 
 // Test: Kontaktformulär
-describe.only('Hitta kontakformulär', () => {
+describe('Hitta kontakformulär', () => {
 // Testfall
     context('Jag går till "Contact us", fyller i fälten och klickar på "Submit"', () => {
         it('Sidan uppdateras och ett meddelande dyker med en text i om att meddelandet tagist emot', async () => {
