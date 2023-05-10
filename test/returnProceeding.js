@@ -2,7 +2,7 @@ const {Builder, By, Key, until} = require ('selenium-webdriver');
 const should = require('chai').should();
 
 /* As a customer, i would like to be able to reorder an allready orderd order */
-describe('Create a reorder', () => {
+describe.only('Create a reorder', () => {
     //Test case:
     context('Filling the form', () => {
         it('IDK?', async () => {
