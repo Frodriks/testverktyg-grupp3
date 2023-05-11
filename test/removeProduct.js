@@ -11,7 +11,7 @@ const assert = require('assert');
     för att kunna redigera den innan jag checkar ut för betalning
 */
 
-// Test: Lägg till/ta bort produkt ur kundkorg
+// Test: Lägg till & ta bort produkt ur kundkorg
 describe.only('Lägg till produkt i kundkorg', () => {
     // Testfall
     context('Jag lägger till en produkt i kundkorgen och sedan tar jag bort den', () => {
