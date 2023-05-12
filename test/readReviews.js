@@ -23,24 +23,22 @@ describe("Read product reviews", () => {
                 await driver.wait(until.elementLocated(By.id('search')), 10000);
                 await driver.findElement(By.id('search')).sendKeys('bag', Key.RETURN);
 
-                //Wait for 10 sec
-                await driver.sleep(10000);
 
                 //Wait for the review section to load
-                await driver.wait(until.elementLocadet(By.css('.action.view')), 10000);
-                await driver.findElement(By.css('.action.view')).click();
+                await driver.wait(until.elementLocated(By.css('a[href="https://magento.softwaretestingboard.com/push-it-messenger-bag.html#reviews"]')), 10000);
+                await driver.findElement(By.css('a[href="https://magento.softwaretestingboard.com/push-it-messenger-bag.html#reviews"]')).click();
 
-                //Wait for 10 sec
-                await driver.sleep(10000);
+                //Wait for 3sec
+                await driver.sleep(3000);
 
                 // Find all review comments
-                const revieComments = await driver.findElement(By.css('.reviews > .review-content'));
+                const revieComments = await driver.findElement(By.css('a[href="https://magento.softwaretestingboard.com/push-it-messenger-bag.html#reviews"]'));
 
             }catch(error) {
                 console.log(error);
             }finally {
                 await driver.quit();
             }
-        })
-    })
-})
+        });
+ });
+});
