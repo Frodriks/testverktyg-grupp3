@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2023-05-10T10:12:13.610Z",
-    "end": "2023-05-10T10:12:20.369Z",
-    "duration": 6759,
+    "start": "2023-05-16T09:31:08.568Z",
+    "end": "2023-05-16T09:31:26.771Z",
+    "duration": 18203,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,50 +18,50 @@
   },
   "results": [
     {
-      "uuid": "ac926781-1556-43ad-89a6-11333b211c0b",
+      "uuid": "abbbd59a-93a9-49c8-b216-b88e01a2f69e",
       "title": "",
-      "fullFile": "C:\\Users\\vikto\\Desktop\\reposstat\\testverktyg-grupp3\\test\\Return proceeding.js",
-      "file": "\\test\\Return proceeding.js",
+      "fullFile": "C:\\Users\\fredde\\MinGithub\\testverktyg-grupp3\\test\\removeProduct.js",
+      "file": "\\test\\removeProduct.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "a0d5d9f3-9fd8-454e-a84b-08ef373da3ce",
-          "title": "Search for product",
-          "fullFile": "C:\\Users\\vikto\\Desktop\\reposstat\\testverktyg-grupp3\\test\\Return proceeding.js",
-          "file": "\\test\\Return proceeding.js",
+          "uuid": "7ecdfee6-03c7-4c3b-b7ae-6af502d88fbe",
+          "title": "Lägg till produkt i kundkorg",
+          "fullFile": "C:\\Users\\fredde\\MinGithub\\testverktyg-grupp3\\test\\removeProduct.js",
+          "file": "\\test\\removeProduct.js",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [],
           "suites": [
             {
-              "uuid": "afa72dc4-0de6-4e19-98b2-3aa2fb06cfe8",
-              "title": "I seartch for a product",
-              "fullFile": "C:\\Users\\vikto\\Desktop\\reposstat\\testverktyg-grupp3\\test\\Return proceeding.js",
-              "file": "\\test\\Return proceeding.js",
+              "uuid": "dccf7aec-d642-4ec1-afec-276babb59277",
+              "title": "Jag lägger till en produkt i kundkorgen och sedan tar jag bort den",
+              "fullFile": "C:\\Users\\fredde\\MinGithub\\testverktyg-grupp3\\test\\removeProduct.js",
+              "file": "\\test\\removeProduct.js",
               "beforeHooks": [],
               "afterHooks": [],
               "tests": [
                 {
-                  "title": "I should see the product that i have searched for",
-                  "fullTitle": "Search for product I seartch for a product I should see the product that i have searched for",
-                  "timedOut": null,
-                  "duration": 6275,
+                  "title": "Jag öppnar kundkorgen och den är tom",
+                  "fullTitle": "Lägg till produkt i kundkorg Jag lägger till en produkt i kundkorgen och sedan tar jag bort den Jag öppnar kundkorgen och den är tom",
+                  "timedOut": false,
+                  "duration": 18193,
                   "state": "failed",
                   "speed": null,
                   "pass": false,
                   "fail": true,
                   "pending": false,
                   "context": null,
-                  "code": "//Start webbrowser\nconst driver = await new Builder().forBrowser('firefox').build();\n//testing-test\ntry{\n    //access  magento website\n    await driver.get('https://magento.softwaretestingboard.com/');\n    await driver.get('https://magento.softwaretestingboard.com/sales/guest/form/');\n    //Get the seartch input\n    await driver.wait(until.elementLocated(By.css('#search')), 10000);\n    await driver.findElement(By.id('search')).sendKeys('shirt', Key.RETURN);\n    //Find the first product\n    await driver.wait(until.elementLocated(By.css('.product-item:first-child')), 10000);\n    const product = await driver.findElement(By.css('.product-item:first-child'));\n    // Find information in the product\n    let productTitle = await product.findElement(By.css('.product-item-link'));\n    let productPrice = await product.findElement(By.css('.price'));\n    //Extract text\n    let productTitleText = await productTitle.getText();\n    let productPriceText = await productPrice.getText();\n    productTitleText.should.equal('Radiant Tee');\n    productPriceText.should.equal('$21.00');\n}finally {\n    //await driver.quit();\n}",
+                  "code": "const driver = await new Builder().forBrowser('firefox').build();\ntry {\n    // Gå till butiken\n    await driver.get('https://magento.softwaretestingboard.com/');\n    // Gå till en produkt     (Den grabbar bara tag i first-child, även om jag skriver nth-child(X))\n    await driver.wait(until.elementLocated(By.css('.product-item :first-child')), 10000);\n    await driver.findElement(By.css('.product-item :first-child')).click();\n    await driver.sleep(2000);\n    // Välj storlek på produkten\n    await driver.wait(until.elementLocated(By.id('option-label-size-143-item-166')), 10000);\n    await driver.findElement(By.id('option-label-size-143-item-166')).click();\n    // Välj färg på produkten\n    await driver.findElement(By.id('option-label-color-93-item-57')).click();\n    // Lägg till produkten i kundkorgen\n    await driver.findElement(By.id('product-addtocart-button')).click();\n    await driver.sleep(2000);\n    // Öppna kundkorgen\n    await driver.wait(until.elementLocated(By.css('.action.showcart')), 10000);\n    await driver.findElement(By.css('.action.showcart')).click();\n    \n    // Ta bort produkten från kundkorgen\n    await driver.findElement(By.css('.action.delete')).click();\n    await driver.sleep(2000);\n    // Bekräfta att du vill ta bort produkten från kundkorgen\n    await driver.wait(until.elementLocated(By.css('.action-accept')), 10000);\n    await driver.findElement(By.css('.action-accept')).click();\n    await driver.sleep(2000);\n    // Konrollera så att kundkorgen är tom\n    await driver.wait(until.elementLocated(By.id('ui-id-1')), 10000);\n    const information = await driver.findElement(By.id('ui-id-1')).getText();\n    // Asserts\n    information.should.contain('You have no items');\n   // assert.equal(information, \"You have no items in your shopping cart.\");\n    expect(information).to.equal(\"You have no items in your shopping cart.\");\n} finally {\n    await driver.quit();\n}",
                   "err": {
-                    "message": "AssertionError: expected '$22.00' to equal '$21.00'",
-                    "estack": "AssertionError: expected '$22.00' to equal '$21.00'\n    at Context.<anonymous> (test\\Return proceeding.js:38:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
-                    "diff": "- $22.00\n+ $21.00\n"
+                    "message": "AssertionError: expected 'Close\\nYou have no items in your shop…' to equal 'You have no items in your shopping ca…'",
+                    "estack": "AssertionError: expected 'Close\\nYou have no items in your shop…' to equal 'You have no items in your shopping ca…'\n    at Context.<anonymous> (test\\removeProduct.js:66:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                    "diff": "- Close\n You have no items in your shopping cart.\n"
                   },
-                  "uuid": "be42ac99-83ca-424f-be77-54dfb103b05d",
-                  "parentUUID": null,
+                  "uuid": "acec50d1-b8a5-4337-a408-fbff0a0ab651",
+                  "parentUUID": "dccf7aec-d642-4ec1-afec-276babb59277",
                   "isHook": false,
                   "skipped": false
                 }
@@ -69,14 +69,14 @@
               "suites": [],
               "passes": [],
               "failures": [
-                "be42ac99-83ca-424f-be77-54dfb103b05d"
+                "acec50d1-b8a5-4337-a408-fbff0a0ab651"
               ],
               "pending": [],
               "skipped": [],
-              "duration": 6275,
+              "duration": 18193,
               "root": false,
               "rootEmpty": false,
-              "_timeout": null
+              "_timeout": 0
             }
           ],
           "passes": [],
@@ -86,7 +86,7 @@
           "duration": 0,
           "root": false,
           "rootEmpty": false,
-          "_timeout": null
+          "_timeout": 0
         }
       ],
       "passes": [],
