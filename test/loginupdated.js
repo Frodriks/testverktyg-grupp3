@@ -11,14 +11,20 @@ describe.only('Create a reorder', () => {
 
             //Reorder my old order
             try{
-                // Go to google.com
-                await driver.get('https://magento.softwaretestingboard.com/customer/account/create/');
+                await driver.get('https://magento.softwaretestingboard.com/customer/account/login/');
         
-                let firstButton = await driver.wait(until.elementLocated(By.name('firstname')), 10000);
+
+                let firstButton = await driver.wait(until.elementLocated(By.name('login[username]')), 10000);
+        
                 await firstButton.click();
-                await driver.findElement(By.name('firstname')).sendKeys('Tim', Key.RETURN);
-                await driver.wait(until.elementLocated(By.name('#email.-text')), 10000);
-                await driver.wait(10000);
+
+                await driver.findElement(By.name('login[username]')).sendKeys('blahblah@gmail.com', Key.RETURN);
+
+                let secondButton = await driver.wait(until.elementLocated(By.name('login[password]')), 10000);
+
+                await secondButton.click();
+
+                await driver.findElement(By.name('login[password]')).sendKeys('Blah1!1#2!L', Key.RETURN);
             }
             finally {
                 await driver.quit();
