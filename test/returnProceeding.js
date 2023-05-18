@@ -63,8 +63,8 @@ describe('Create a reorder', () => {
                 await driver.findElement(By.css('.checkout-methods-items > .item > button')).click();
                 console.log('Press: proceed-to-checkout-button');
 
-                //Let whe website load for 2 seconds extra
-                await driver.sleep(2000);
+                //Let whe website load for 5 seconds extra
+                await driver.sleep(5000);
 
                 //Fill new form
                 console.log('');
@@ -118,7 +118,7 @@ describe('Create a reorder', () => {
                 console.log('Press "NEXT" button');
 
                 //Let whe website load for 5 seconds extra
-                await driver.sleep(5000);
+                await driver.sleep(10000);
 
                 // Press "PLACE ORDER" button
                 await driver.wait(until.elementLocated(By.css('.actions-toolbar > .primary > .checkout')), 30000);
