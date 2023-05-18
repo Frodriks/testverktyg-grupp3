@@ -41,8 +41,8 @@ describe("Read product reviews", () => {
                 reviewComments.should.contain('Customer Reviews');
 
 
-            }catch(error) {
-                console.log(error);
+            /*}catch(error) {
+                console.log(error);*/
             }finally {
             await driver.quit();
             }
