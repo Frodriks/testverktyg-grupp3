@@ -5,7 +5,7 @@ const should = require('chai').should();
 describe('Create a reorder', () => {
     //Test case:
     context('Filling the form', () => {
-        it('IDK?', async () => {
+        it('Press "PLACE ORDER" button', async () => {
             //Start webbrowser
             const driver = await new Builder().forBrowser('firefox').build();
 
