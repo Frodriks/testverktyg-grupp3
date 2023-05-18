@@ -5,7 +5,7 @@ const should =require('chai').should();
 I would like to be able to sort men's pants by price,
 in order to locate the cheapest pair */
 
-describe.only('Sort pants by price', () => {
+describe('Sort pants by price', () => {
     // Test case
     context('I sort mens pants by price', () => {
         it('I should see the cheapest pair of pants first', async () => {
@@ -25,7 +25,7 @@ describe.only('Sort pants by price', () => {
               await driver.sleep(2000);
 
               // Find all elements with the class "li.item"
-                const listItemElements = await driver.findElements(By.css('li.item'));
+                //const listItemElements = await driver.findElements(By.css('li.item'));
 
               // Find the second-to-last element with the class "li.item" and click on it
                // const secondToLastElement = listItemElements[listItemElements.length - 11]; //testar olika -n/nn
@@ -54,7 +54,7 @@ describe.only('Sort pants by price', () => {
 
 
 
-              // Press "Pants"
+              // Misslyckade försök
               /*
               driver.wait(async function () {
                 const listElements = await driver.findElements(By.css('li.item'));
