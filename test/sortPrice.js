@@ -5,7 +5,7 @@ const should =require('chai').should();
 I would like to be able to sort men's pants by price,
 in order to locate the cheapest pair */
 
-describe('Sort pants by price', () => {
+describe.only('Sort pants by price', () => {
     // Test case
     context('I sort mens pants by price', () => {
         it('I should see the cheapest pair of pants first', async () => {
@@ -28,14 +28,29 @@ describe('Sort pants by price', () => {
                 const listItemElements = await driver.findElements(By.css('li.item'));
 
               // Find the second-to-last element with the class "li.item" and click on it
-                const secondToLastElement = listItemElements[listItemElements.length - 7]; //testar olika -n/nn
-                await secondToLastElement.click();
+               // const secondToLastElement = listItemElements[listItemElements.length - 11]; //testar olika -n/nn
+               // await secondToLastElement.click();
+
+               await driver.wait(until.elementLocated(By.css('ul.items:nth-child(4) > li:nth-child(1) > a:nth-child(1)')), 10000);
+               await driver.findElement(By.css('ul.items:nth-child(4) > li:nth-child(1) > a:nth-child(1)')).click();
 
 
+               await driver.wait(until.elementLocated(By.id('sorter')), 10000);
+               await driver.findElement(By.css('#sorter')).click();
+               
+               
 
+               await driver.wait(until.elementLocated(By.css('div.toolbar:nth-child(3) > div:nth-child(4) > select:nth-child(2) > option:nth-child(3)')), 10000);
+            
+               await driver.findElement(By.css('div.toolbar:nth-child(3) > div:nth-child(4) > select:nth-child(2) > option:nth-child(3)')).click(); 
 
-
-
+                  
+                  await driver.wait(until.elementLocated(By.css('#product-price-802 > span:nth-child(1)')), 10000);
+                  const information = await driver.findElement(By.css('#product-price-802 > span:nth-child(1)')).getText();
+  
+                  // Asserts
+                  information.should.contain('$28.00');
+                
 
 
 
@@ -61,7 +76,7 @@ describe('Sort pants by price', () => {
               // Press "Pants"
               // await driver.findElement(By.css('#ui-id-23')).click();
 
-              await driver.sleep(10000);
+              //await driver.sleep(10000);
 
               // Click Sort by drop-down menu
               //await driver.findElement(By.css('#sorter')).click(); 

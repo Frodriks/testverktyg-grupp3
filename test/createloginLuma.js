@@ -1,4 +1,3 @@
-
 const { link } = require('fs');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 
@@ -60,3 +59,4 @@ async function googleSearch() {
 }
 
 googleSearch();
+
