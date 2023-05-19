@@ -1,5 +1,5 @@
 
-const { link } = require('fs');
+/* const { link } = require('fs');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 
 const should = require('chai').should();
@@ -44,3 +44,4 @@ async function googleSearch() {
 
 googleSearch();
 
+*/
