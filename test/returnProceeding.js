@@ -2,7 +2,7 @@ const {Builder, By, Key, until} = require ('selenium-webdriver');
 const should = require('chai').should();
 
 /* As a customer, i would like to be able to reorder an allready orderd order */
-describe('Create a reorder', () => {
+describe.only('Create a reorder', () => {
     //Test case:
     context('Filling the form', () => {
         it('Press "PLACE ORDER" button', async () => {
@@ -117,13 +117,24 @@ describe('Create a reorder', () => {
                 await driver.findElement(By.css('#shipping-method-buttons-container > .primary > button')).click();
                 console.log('Press "NEXT" button');
 
-                //Let whe website load for 5 seconds extra
+                //Let whe website load for 10 seconds extra
                 await driver.sleep(10000);
 
                 // Press "PLACE ORDER" button
                 await driver.wait(until.elementLocated(By.css('.actions-toolbar > .primary > .checkout')), 30000);
                 await driver.findElement(By.css('.actions-toolbar > .primary > .checkout')).click();
                 console.log('Press "PLACE ORDER" button');
+
+                //Find "Thank You" message
+                await driver.wait(until.elementLocated(By.className('checkout-success')), 30000);
+                const information = await driver.findElement(By.className('checkout-success')).getText();
+
+                //Let whe website load for 5 seconds extra
+                await driver.sleep(5000);
+
+                // Asserts
+                information.should.contain('Your order # is');
+                
             }
             finally {
                 await driver.quit();
