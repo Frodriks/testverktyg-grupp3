@@ -1,6 +1,7 @@
 // Includes
-
 const { Builder, By, Key, until } = require('selenium-webdriver');
+
+// Asserts
 const should = require('chai').should();
 const expect = require('chai').expect;
 const assert = require('assert');

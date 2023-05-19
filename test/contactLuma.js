@@ -1,6 +1,7 @@
 // Includes
-
 const { Builder, By, Key, until } = require('selenium-webdriver');
+
+//Asserts
 const should = require ('chai').should();
 const assert = require('assert');
 const expect = require('chai').expect;
@@ -51,11 +52,11 @@ describe('Hitta kontakformulär', () => {
                 // Asserts
                 information.should.contain('Thanks for contacting us');
                 assert.equal(information, "Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
-                expect(information).to.equal("Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
+                expect(information).to.contain("Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
 
     
             } finally {
-               // await driver.quit();
+                await driver.quit();
             }
         });
     });
