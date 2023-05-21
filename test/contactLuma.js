@@ -52,7 +52,7 @@ describe('Hitta kontakformulär', () => {
                 // Asserts (Vet att det är överflödig kod, men Ville prova lite olika)
                 information.should.contain('Thanks for contacting us');
                 assert.equal(information, "Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
-                expect(information).to.contain("Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
+                //expect(information).to.contain("Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
 
     
             } finally {

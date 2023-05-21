@@ -25,7 +25,7 @@ describe('Lägg till produkt i kundkorg', () => {
                 // Gå till en produkt     (Den grabbar bara tag i first-child, även om jag skriver nth-child(X))
                 await driver.wait(until.elementLocated(By.css('.product-item :first-child')), 10000);
                 await driver.findElement(By.css('.product-item :first-child')).click();
-                
+
                 // Vänta på att sidan ska ladda
                 await driver.sleep(2000);
 
@@ -46,20 +46,18 @@ describe('Lägg till produkt i kundkorg', () => {
                 await driver.wait(until.elementLocated(By.css('.action.showcart')), 10000);
                 await driver.findElement(By.css('.action.showcart')).click();
 
-                
-
                 // Ta bort produkten från kundkorgen
                 await driver.findElement(By.css('.action.delete')).click();
 
                 // Vänta på att sidan ska ladda
-                await driver.sleep(2000);
+                await driver.sleep(3000);
 
                 // Bekräfta att du vill ta bort produkten från kundkorgen
                 await driver.wait(until.elementLocated(By.css('.action-accept')), 10000);
                 await driver.findElement(By.css('.action-accept')).click();
 
                 // Vänta på att sidan ska ladda
-                await driver.sleep(2000);
+                await driver.sleep(3000);
 
                 // Konrollera så att kundkorgen är tom
                 await driver.wait(until.elementLocated(By.id('ui-id-1')), 10000);
@@ -67,7 +65,7 @@ describe('Lägg till produkt i kundkorg', () => {
 
                 // Asserts (Vet att det är överflödig kod, men Ville prova lite olika)
                 information.should.contain('You have no items');
-                // assert.equal(information, "You have no items in your shopping cart.");
+                //assert.equal(information, "You have no items in your shopping cart.");
                 //expect(information).to.equal("You have no items in your shopping cart.");
 
             } finally {
