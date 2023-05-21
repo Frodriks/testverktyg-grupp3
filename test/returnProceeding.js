@@ -14,49 +14,49 @@ describe('Create a reorder', () => {
             //Reorder my old order
             try{
                 //access  magento website
-                await driver.get('https://magento.softwaretestingboard.com/');
                 console.log('access  magento website');
-
+                await driver.get('https://magento.softwaretestingboard.com/');
+                
                 //Access orders and return page
+                console.log('Access orders and return page');
                 await driver.wait(until.elementLocated(By.css('.nav:nth-child(4) a')), 30000);
                 await driver.findElement(By.css('.nav:nth-child(4) a')).click();
-                console.log('Access orders and return page');
-                
+                                
                 //Fill Order-ID
+                console.log('Fill Order-ID');
                 await driver.wait(until.elementLocated(By.css('#oar-order-id')), 30000);
                 await driver.findElement(By.id('oar-order-id')).sendKeys('000007642 ');
-                console.log('Fill Order-ID');
-
+            
                 //Fill Billing-lastname
-                await driver.findElement(By.id('oar-billing-lastname')).sendKeys('stenquist');
                 console.log('Fill Billing-lastname');
-
+                await driver.findElement(By.id('oar-billing-lastname')).sendKeys('stenquist');
+                                
                 //Select "Find order by" = email
-               const selectEorZ = await driver.findElement(By.id('quick-search-type-id'));
-               await selectEorZ.click();
-               await selectEorZ.findElement(By.css('option[value="email"]')).click();
-               console.log('Select "Find order by" = email');
-
+                console.log('Select "Find order by" = email');
+                const selectEorZ = await driver.findElement(By.id('quick-search-type-id'));
+                await selectEorZ.click();
+                await selectEorZ.findElement(By.css('option[value="email"]')).click();
+               
                 //Fill Email
-                await driver.findElement(By.id('oar_email')).sendKeys('viktor.stenquist@live.se');
                 console.log('Fill Email');
-
+                await driver.findElement(By.id('oar_email')).sendKeys('viktor.stenquist@live.se');
+                
                 //Let whe website load for 2 seconds extra
                 await driver.sleep(2000);
 
                 //Press: continue-button
+                console.log('Press: continue-button');
                 await driver.wait(until.elementLocated(By.className('primary')), 30000);
                 await driver.findElement(By.className('primary')).click();
-                console.log('Press: continue-button');
-
+                
                 //Let whe website load for 2 seconds extra
                 await driver.sleep(2000);
 
                 //Press on the reorder link
+                console.log('Press on the reorder link');
                 await driver.wait(until.elementLocated(By.className('order')), 30000);
                 await driver.findElement(By.className('order')).click();
-                console.log('Press on the reorder link');
-
+                
                 //Let whe website load for 2 seconds extra
                 await driver.sleep(2000);
 
@@ -69,7 +69,7 @@ describe('Create a reorder', () => {
                 await driver.sleep(5000);
 
                 //Fill new form
-                console.log('');
+                console.log('Fill new form');
                 //Fill email-address
                 await driver.wait(until.elementLocated(By.id('customer-email')), 30000);
                 await driver.findElement(By.id('customer-email')).sendKeys('viktor.stenquist@live.se');
