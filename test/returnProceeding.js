@@ -61,70 +61,70 @@ describe('Create a reorder', () => {
                 await driver.sleep(2000);
 
                 //Press: proceed-to-checkout-button
+                console.log('Press: proceed-to-checkout-button');
                 await driver.wait(until.elementLocated(By.css('.checkout-methods-items > .item > button')),30000);
                 await driver.findElement(By.css('.checkout-methods-items > .item > button')).click();
-                console.log('Press: proceed-to-checkout-button');
-
+                
                 //Let whe website load for 5 seconds extra
                 await driver.sleep(5000);
 
                 //Fill new form
                 console.log('Fill new form');
                 //Fill email-address
+                console.log('Fill email-address');
                 await driver.wait(until.elementLocated(By.id('customer-email')), 30000);
                 await driver.findElement(By.id('customer-email')).sendKeys('viktor.stenquist@live.se');
-                console.log('Fill email-address');
-
+                
                 //Fill firstname
+                console.log('Fill firstname');
                 await driver.wait(until.elementLocated(By.name('firstname')), 30000);
                 await driver.findElement(By.name('firstname')).sendKeys('viktor');
-                console.log('Fill firstname');
-
+                
                 //Fill lastname
-                await driver.findElement(By.name('lastname')).sendKeys('stenquist');
                 console.log('Fill lastname');
-
+                await driver.findElement(By.name('lastname')).sendKeys('stenquist');
+                
                 //Fill street-address
-                await driver.findElement(By.name('street[0]')).sendKeys('Lilla vägen 37');
                 console.log('Fill street-address');
-
+                await driver.findElement(By.name('street[0]')).sendKeys('Lilla vägen 37');
+            
                 //Fill City
-                await driver.findElement(By.name('city')).sendKeys('Öckerö');
                 console.log('Fill City');
+                await driver.findElement(By.name('city')).sendKeys('Öckerö');
 
-                //Let whe website load for 1 second extra
-                await driver.sleep(1000);
+                //Let whe website load for 2 seconds extra
+                await driver.sleep(2000);
 
                 //Select Sweden as country
+                console.log('Select Sweden as country');
                 const selectContry = await driver.findElement(By.name('country_id'));
                 await selectContry.click();
                 await selectContry.findElement(By.css('option[value="SE"]')).click();
-                console.log('Select Sweden as country');
 
                 //Fill Zip Code
-                await driver.findElement(By.name('postcode')).sendKeys('123 45');
-                console.log('Fill Zip Code');                
+                console.log('Fill Zip Code');
+                await driver.findElement(By.name('postcode')).sendKeys('123 45');              
                 
                 //fill nummber
-                await driver.findElement(By.name('telephone')).sendKeys('072 757 32 32');
                 console.log('fill nummber');
+                await driver.findElement(By.name('telephone')).sendKeys('072 757 32 32');
 
                 //Let whe website load for 5 seconds extra
                 await driver.sleep(5000);
 
                 // Press "NEXT" button
+                console.log('Press "NEXT" button');
                 await driver.wait(until.elementLocated(By.css('#shipping-method-buttons-container > .primary > button')), 30000);
                 await driver.findElement(By.css('#shipping-method-buttons-container > .primary > button')).click();
-                console.log('Press "NEXT" button');
 
                 //Let whe website load for 10 seconds extra
                 await driver.sleep(10000);
 
                 // Press "PLACE ORDER" button
+                console.log('Press "PLACE ORDER" button');
                 await driver.wait(until.elementLocated(By.css('.actions-toolbar > .primary > .checkout')), 30000);
                 await driver.findElement(By.css('.actions-toolbar > .primary > .checkout')).click();
-                console.log('Press "PLACE ORDER" button');
-
+                
                 //Find "Thank You" message
                 await driver.wait(until.elementLocated(By.className('checkout-success')), 30000);
                 const information = await driver.findElement(By.className('checkout-success')).getText();
