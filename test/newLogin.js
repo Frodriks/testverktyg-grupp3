@@ -32,7 +32,7 @@ describe("Logga in på kontot", () => {
           await driver.sleep(10000);
           await driver.wait(until.elementLocated(By.css('.logged-in')), 10000);
           const information = await driver.findElement(By.css('.logged-in')).getText();
-          information.should.contain('Test Testsson')
+          information.should.contain('namn efter')
         // testet funkar inte eftersom en recaptcha behövs att fyllas i (antibot) men den fyller i detaljerna som den ska och jag har en assert som jag bara kan anta att den funkar
             //testet körs genom att skriva "npx mocha --no-timeouts"
       } catch (error) {
