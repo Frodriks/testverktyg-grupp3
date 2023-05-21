@@ -27,7 +27,7 @@ describe('Lägg till produkt i kundkorg', () => {
                 await driver.findElement(By.css('.product-item :first-child')).click();
 
                 // Vänta på att sidan ska ladda
-                await driver.sleep(2000);
+                await driver.sleep(3000);
 
                 // Välj storlek på produkten
                 await driver.wait(until.elementLocated(By.id('option-label-size-143-item-166')), 10000);
@@ -40,7 +40,7 @@ describe('Lägg till produkt i kundkorg', () => {
                 await driver.findElement(By.id('product-addtocart-button')).click();
 
                 // Vänta på att sidan ska ladda
-                await driver.sleep(2000);
+                await driver.sleep(3000);
 
                 // Öppna kundkorgen
                 await driver.wait(until.elementLocated(By.css('.action.showcart')), 10000);
