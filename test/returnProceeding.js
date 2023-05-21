@@ -1,7 +1,9 @@
 const {Builder, By, Key, until} = require ('selenium-webdriver');
 const should = require('chai').should();
 
-/* As a customer, i would like to be able to reorder an allready orderd order */
+/* As a customer, i would like to 
+   be able to reorder an allready 
+          orderd order */
 describe('Create a reorder', () => {
     //Test case:
     context('Filling the form', () => {
@@ -101,9 +103,7 @@ describe('Create a reorder', () => {
 
                 //Fill Zip Code
                 await driver.findElement(By.name('postcode')).sendKeys('123 45');
-                console.log('Fill Zip Code');
-
-                
+                console.log('Fill Zip Code');                
                 
                 //fill nummber
                 await driver.findElement(By.name('telephone')).sendKeys('072 757 32 32');
@@ -133,8 +133,7 @@ describe('Create a reorder', () => {
                 await driver.sleep(5000);
 
                 // Asserts
-                information.should.contain('Your order # is');
-                
+                information.should.contain('Your order # is');                
             }
             finally {
                 await driver.quit();
