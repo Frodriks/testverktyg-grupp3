@@ -126,6 +126,7 @@ describe('Create a reorder', () => {
                 await driver.findElement(By.css('.actions-toolbar > .primary > .checkout')).click();
                 
                 //Find "Thank You" message
+                console.log('Find "Thank You" message')
                 await driver.wait(until.elementLocated(By.className('checkout-success')), 30000);
                 const information = await driver.findElement(By.className('checkout-success')).getText();
 
@@ -133,9 +134,11 @@ describe('Create a reorder', () => {
                 await driver.sleep(5000);
 
                 // Asserts
+                console.log('Asserts information.should.contain')
                 information.should.contain('Your order # is');                
             }
             finally {
+                console.log('await driver.quit();')
                 await driver.quit();
             }
         }); 
