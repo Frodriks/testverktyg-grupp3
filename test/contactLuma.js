@@ -49,7 +49,7 @@ describe('Hitta kontakformulär', () => {
                 await driver.wait(until.elementLocated(By.css('.message-success')), 10000);
                 const information = await driver.findElement(By.css('.message-success')).getText();
 
-                // Asserts
+                // Asserts (Vet att det är överflödig kod, men Ville prova lite olika)
                 information.should.contain('Thanks for contacting us');
                 assert.equal(information, "Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
                 expect(information).to.contain("Thanks for contacting us with your comments and questions. We'll respond to you very soon." );
