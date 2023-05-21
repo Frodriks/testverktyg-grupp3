@@ -78,7 +78,7 @@ describe("Add an item to the wish list", () => {
     
 
             } finally {
-                //await driver.quit();
+                await driver.quit();
             }
 
         });
