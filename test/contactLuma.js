@@ -43,7 +43,7 @@ describe('Hitta kontakformulär', () => {
                 await driver.findElement(By.css('.action.submit.primary')).click();
 
                 // Vänta på att sidan ska ladda
-                await driver.sleep(1000);
+                await driver.sleep(2000);
 
                 // Hitta meddelandet om att de tagit emot formuläret
                 await driver.wait(until.elementLocated(By.css('.message-success')), 10000);
